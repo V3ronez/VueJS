@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{link}}">??</a></p>
+        <p><a v-bind:href="link">será que vai mesmo?</a></p>
+        <!--Diretiva v-bind:href=""-->
+        <p><a :href="link">link?</a></p>
+        <!--usando o : para nao usar o v-bind:-->
+        <p>
+            <input type="text" v-model="nome"><br> <!-- atualização em duas direções -->
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app", //el linka a instancia ao elemento declarado
+            data: {
+                nome: "Maria",
+                link: "https://www.youtube.com/watch?v=Cg6n3ZhKwt4"
+            },
+            watch: {
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+
+<body class="exercicio">
+    <div id="app">
+        <p>{{ contador }}</p>
+        <p>
+            <button v-on:click="add">+1</button>
+            <!--passa o methods dentro da diretiva -->
+            <button @click="contador -= 2">-2</button>
+            <!-- @ é o mesmo que v-on: -->
+        </p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: {{x}}, {{y}}
+            <span @mousemove.stop>Aqui não </span>
+        </p>
+        <input type="text" @keyup.enter ="alert">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                atualizarPosicao(event) {
+                    this.x = event.clientX
+                    this.y = event.clientY
+                },
+                alert() {
+                    alert('Enter!')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
