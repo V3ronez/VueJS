@@ -10,10 +10,45 @@
 </head>
 
 <body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <!-- <div>
+            <input type="text" size="25" 
+            placeholder="Digite pra gerar..."      SEM REFATORA
+            :value="text" @input="onData">          
+        </div> -->
 
-    <script>
-        // ...
-    </script>
+         <div>
+            <input type="text" size="25" 
+            placeholder="Digite pra gerar..." 
+            v-model="text">          
+        </div>
+
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+        </div>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    title: 'Gerador QRCode',
+                    text: 'Banho gelado é daora XD',
+                    qrcode: new QRious({ size: 400 })
+                },
+                computed: {
+                    newQRCode() {
+                        this.qrcode.value = this.text
+                        return this.qrcode.toDataURL()
+                    }
+                },
+                // methods: {
+                //     onData(event) {
+                //         this.text = event.target.value    SEM REFATORAR
+                //     }
+                // }
+            })
+        </script>
 </body>
 
 </html>
