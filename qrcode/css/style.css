@@ -18,11 +18,12 @@ body {
 
 input {
     font-size: 2em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-weight: 1000;
 }
 
 .output {
     border: 1px solid #222;
-    padding: 30px 15px;
+    padding: 10px 10px;
     background-color: #0006;
 }
