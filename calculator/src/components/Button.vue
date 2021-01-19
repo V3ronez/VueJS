@@ -1,6 +1,9 @@
 <template>
-  <button class="button" :class="{ double, triple, operation }">
+  <button class="button" 
+     @click="$emit('onClick', label)"
+    :class="{ double, triple, operation }">
     <!--Se for verdadeiro vai aplicar-->
+    <!--$emit() vai disparar um evento -->
     {{ label }}
   </button>
 </template>
